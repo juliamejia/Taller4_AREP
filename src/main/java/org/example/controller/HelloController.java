@@ -9,6 +9,6 @@ public class HelloController {
     public static String index() {
         return "HTTP/1.1 200 OK\r\n" +
                 "Content-type: text/html\r\n" +
-                "\r\n" + "Greetings from Spring Boot!";
+                "\r\n" + "Hola!, vamos a usar SpringBoot";
     }
 }

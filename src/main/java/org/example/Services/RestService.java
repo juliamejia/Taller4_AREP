@@ -8,6 +8,6 @@ import java.lang.reflect.InvocationTargetException;
 public class RestService {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, IllegalAccessException {
         HttpServer server = HttpServer.getInstance();
-        server.main(args);
+        server.run(args);
     }
 }

@@ -5,27 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55ca7938-a55d-49ee-b818-b6c37198c90a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/HttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/HttpServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/Jpg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/Jpg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/RestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/RestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Cache.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/HttpConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/HttpServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/Css.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/Html.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/Jpg.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/Js.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/RestService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/RestServiceInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/spark/Request.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/spark/Response.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/spark/Route.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/spark/Spark.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Estilo.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/HttpServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/HttpServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/RestService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Services/RestService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +61,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="org.example.Services.RestService" />
-      <module name="networking" />
+      <module name="miprimera-app" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.Services.*" />

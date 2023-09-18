@@ -38,7 +38,7 @@ public class HttpServer {
      * @param args Argumentos de línea de comandos (no se utilizan en este caso).
      * @throws IOException Si ocurre un error de E/S al iniciar el servidor.
      */
-    public void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, IllegalAccessException {
+    public void run(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, IllegalAccessException {
         List<Class<?>> classes = getClasses();
         for (Class<?> clasS:classes){
             if(clasS.isAnnotationPresent(Component.class)){
@@ -81,6 +81,7 @@ public class HttpServer {
             boolean firstLine = true;
             String request = "/simple";
             String verb = "";
+            outputStream = clientSocket.getOutputStream();
             // Lee las líneas de entrada de la solicitud HTTP
             while ((inputLine = in.readLine()) != null) {
                 System.out.println("Received: " + inputLine);

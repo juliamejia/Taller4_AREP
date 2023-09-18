@@ -17,7 +17,7 @@ public class Jpg implements RestServiceInterface{
     public String getResponse() {
         String contenido = null;
         try {
-            Path file = new File("src/main/resources/imagenJulia.jpg").toPath();
+            Path file = new File("src/main/resources/stich.png").toPath();
             contenido = Files.probeContentType(file);
         } catch (IOException e) {
             e.printStackTrace();

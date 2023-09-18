@@ -1,11 +1,13 @@
 package org.example;
 
-import org.example.Services.RestServiceInterface;
-import org.example.spark.Spark;
+import org.example.controller.annotations.Component;
+import org.example.controller.annotations.RequestMapping;
+import org.example.spark.Response;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.*;
 import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.*;
 
 /**
@@ -13,7 +15,10 @@ import java.util.*;
  */
 public class HttpServer {
     private static HttpServer instance = new HttpServer();
-    private Map<String, RestServiceInterface> services = new HashMap<>();
+    private Map<String, Method> services = new HashMap<String, Method>();
+    private Response res;
+    private static OutputStream outputStream = null;
+    private final String root = "org/example/controller";
 
     private HttpServer() {
     }
@@ -33,7 +38,21 @@ public class HttpServer {
      * @param args Argumentos de línea de comandos (no se utilizan en este caso).
      * @throws IOException Si ocurre un error de E/S al iniciar el servidor.
      */
-    public void main(String[] args) throws IOException {
+    public void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, IllegalAccessException {
+        List<Class<?>> classes = getClasses();
+        for (Class<?> clasS:classes){
+            if(clasS.isAnnotationPresent(Component.class)){
+                Class<?> c = Class.forName(clasS.getName());
+                Method[] m = c.getMethods();
+                for (Method me: m){
+                    if(me.isAnnotationPresent(RequestMapping.class)){
+                        String key = me.getAnnotation(RequestMapping.class).value();
+                        services.put(key,me);
+                    }
+                }
+            }
+
+        }
         // Crea un socket de servidor en el puerto 35000
         ServerSocket serverSocket = null;
         try {
@@ -82,17 +101,9 @@ public class HttpServer {
                 }
             }
             if (Objects.equals(verb, "GET")) {
-                if (Spark.cache.containsKey(request)) {
-                    outputLine = Spark.cache.get(request).getResponse();
-                } else if (!Spark.cache.containsKey(request) && !request.contains("favicon")) {
-                    outputLine = Spark.setCache(request);
-                }
-            } else if (Objects.equals(verb, "POST")) {
-                if (!request.contains("Julia")) {
-                    String value = request.split("=")[1];
-                    String key = request.split("=")[0];
-                    key = key.split("\\?")[1];
-                    outputLine = Spark.post(key, value);
+                System.out.println(request);
+                if(services.containsKey(request)){
+                    outputLine = services.get(request).invoke(null).toString();
                 }
             }
             // Decide qué respuesta enviar al cliente
@@ -188,5 +199,36 @@ public class HttpServer {
         }
         tabla += "</table>";
         return tabla;
+    }
+
+    public OutputStream getOutputStream() {
+        return outputStream;
+    }
+
+    private List<Class<?>> getClasses(){
+        List<Class<?>> classes = new ArrayList<>();
+        try{
+            for (String cp: classPaths()){
+                File file = new File(cp + "/" + root);
+                if(file.exists() && file.isDirectory()){
+                    for (File cf: Objects.requireNonNull(file.listFiles())){
+                        if(cf.isFile() && cf.getName().endsWith(".class")){
+                            String rootTemp = root.replace("/",".");
+                            String className = rootTemp+"."+cf.getName().replace(".class","");
+                            Class<?> clasS =  Class.forName(className);
+                            classes.add(clasS);
+                        }
+                    }
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return classes;
+    }
+    private ArrayList<String> classPaths(){
+        String classPath = System.getProperty("java.class.path");
+        String[] classPaths =  classPath.split(System.getProperty("path.separator"));
+        return new ArrayList<>(Arrays.asList(classPaths));
     }
 }
